@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Forum - Zen OS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="forum.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="zen-logo.png" alt="Zen OS" class="logo">
+                <span class="brand-text">Zen OS</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="documentation.html" class="nav-link">Documentation</a>
+                <a href="installation.html" class="nav-link">Installation</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="forum.html" class="nav-link active">Forum</a>
+            </div>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="forum-container">
+        <!-- Forum Header -->
+        <div class="forum-header">
+            <h1>Zen OS Community Forum</h1>
+            <p>Connect with fellow users, share knowledge, and get help from the community</p>
+            <div class="forum-stats">
+                <div class="stat">
+                    <span class="stat-number">1,247</span>
+                    <span class="stat-label">Members</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">3,856</span>
+                    <span class="stat-label">Posts</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">642</span>
+                    <span class="stat-label">Topics</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="forum-content">
+            <!-- Forum Sidebar -->
+            <aside class="forum-sidebar">
+                <div class="user-panel">
+                    <div class="user-avatar">ZU</div>
+                    <div class="user-info">
+                        <div class="username">Guest User</div>
+                        <div class="user-status">Not logged in</div>
+                    </div>
+                    <button class="btn btn-primary btn-small" id="loginBtn">Login</button>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Categories</h3>
+                    <ul class="category-list">
+                        <li><a href="#" data-category="all" class="active">All Topics</a></li>
+                        <li><a href="#" data-category="general">General Discussion</a></li>
+                        <li><a href="#" data-category="support">Help & Support</a></li>
+                        <li><a href="#" data-category="development">Development</a></li>
+                        <li><a href="#" data-category="customization">Customization</a></li>
+                        <li><a href="#" data-category="announcements">Announcements</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Quick Actions</h3>
+                    <button class="btn btn-secondary btn-block" id="newTopicBtn">New Topic</button>
+                    <button class="btn btn-secondary btn-block">Search Posts</button>
+                </div>
+            </aside>
+
+            <!-- Main Forum Content -->
+            <main class="forum-main">
+                <div class="forum-toolbar">
+                    <div class="toolbar-left">
+                        <select class="sort-select">
+                            <option>Latest Activity</option>
+                            <option>Most Popular</option>
+                            <option>Newest First</option>
+                            <option>Most Replies</option>
+                        </select>
+                    </div>
+                    <div class="toolbar-right">
+                        <input type="text" class="search-input" placeholder="Search topics...">
+                        <button class="btn btn-primary" id="searchBtn">Search</button>
+                    </div>
+                </div>
+
+                <div class="topics-list" id="topicsList">
+                    <!-- Sample topics will be populated by JavaScript -->
+                </div>
+
+                <div class="pagination">
+                    <button class="btn btn-secondary">Previous</button>
+                    <span class="page-info">Page 1 of 12</span>
+                    <button class="btn btn-secondary">Next</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal for New Topic -->
+    <div class="modal" id="newTopicModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Topic</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="newTopicForm">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select class="form-control" required>
+                            <option value="">Select a category</option>
+                            <option value="general">General Discussion</option>
+                            <option value="support">Help & Support</option>
+                            <option value="development">Development</option>
+                            <option value="customization">Customization</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Topic Title</label>
+                        <input type="text" class="form-control" placeholder="Enter topic title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea class="form-control" rows="6" placeholder="Write your post content here..." required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelTopicBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create Topic</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Login -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login to Forum</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Username or Email</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox"> Remember me
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelLoginBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+                <div class="login-footer">
+                    <p>Don't have an account? <a href="#">Sign up here</a></p>
+                    <p><a href="#">Forgot your password?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="forum.js"></script>
+</body>
+</html>

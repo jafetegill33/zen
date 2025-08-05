@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Zen OS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .docs-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 120px 1.5rem 80px;
+        }
+        .docs-sidebar {
+            position: fixed;
+            left: 20px;
+            top: 120px;
+            width: 250px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+        }
+        .docs-content {
+            margin-left: 290px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+        }
+        .docs-nav ul {
+            list-style: none;
+        }
+        .docs-nav li {
+            margin-bottom: 0.5rem;
+        }
+        .docs-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem;
+            display: block;
+            border-radius: 0.25rem;
+            transition: all 0.3s ease;
+        }
+        .docs-nav a:hover,
+        .docs-nav a.active {
+            background: var(--surface);
+            color: var(--primary-color);
+        }
+        .docs-section {
+            margin-bottom: 3rem;
+        }
+        .docs-section h2 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .code-block {
+            background: #1e293b;
+            color: #cbd5e1;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            font-family: 'Space Mono', monospace;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        @media (max-width: 768px) {
+            .docs-sidebar {
+                position: static;
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+            .docs-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="zen-logo.png" alt="Zen OS" class="logo">
+                <span class="brand-text">Zen OS</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="documentation.html" class="nav-link active">Documentation</a>
+                <a href="installation.html" class="nav-link">Installation</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="forum.html" class="nav-link">Forum</a>
+            </div>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside class="docs-sidebar">
+            <nav class="docs-nav">
+                <h3>Documentation</h3>
+                <ul>
+                    <li><a href="#getting-started" class="active">Getting Started</a></li>
+                    <li><a href="#desktop-environment">Desktop Environment</a></li>
+                    <li><a href="#package-management">Package Management</a></li>
+                    <li><a href="#system-configuration">System Configuration</a></li>
+                    <li><a href="#development-tools">Development Tools</a></li>
+                    <li><a href="#customization">Customization</a></li>
+                    <li><a href="#troubleshooting">Troubleshooting</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
+            <h1>Zen OS Documentation</h1>
+            <p>Welcome to the comprehensive documentation for Zen OS Zebu. This guide will help you get the most out of your minimalist Linux distribution.</p>
+
+            <section id="getting-started" class="docs-section">
+                <h2>Getting Started</h2>
+                <p>Zen OS is designed to be intuitive from the first boot. Here's what you need to know to get started:</p>
+                
+                <h3>First Boot</h3>
+                <p>After installation, Zen OS will boot into a clean, minimal desktop environment. The default configuration includes:</p>
+                <ul>
+                    <li>i3-gaps window manager for efficient workspace management</li>
+                    <li>Custom Zen status bar with system information</li>
+                    <li>Application launcher accessible via Super key</li>
+                    <li>Terminal emulator pre-configured with zsh and useful aliases</li>
+                </ul>
+
+                <h3>Basic Navigation</h3>
+                <div class="code-block">
+Super + Enter        # Open terminal
+Super + d           # Application launcher
+Super + Shift + q   # Close window
+Super + [1-9]       # Switch to workspace
+Super + Shift + [1-9] # Move window to workspace
+                </div>
+            </section>
+
+            <section id="desktop-environment" class="docs-section">
+                <h2>Desktop Environment</h2>
+                <p>Zen OS uses a custom desktop environment built around i3-gaps, optimized for productivity and minimal distractions.</p>
+
+                <h3>Window Management</h3>
+                <p>The tiling window manager automatically arranges windows for optimal screen space usage:</p>
+                <ul>
+                    <li>Windows automatically tile without overlapping</li>
+                    <li>Resize windows with Super + r, then arrow keys</li>
+                    <li>Toggle floating mode with Super + Shift + Space</li>
+                    <li>Fullscreen toggle with Super + f</li>
+                </ul>
+
+                <h3>Status Bar</h3>
+                <p>The top status bar displays essential system information including CPU usage, memory, network status, and time.</p>
+            </section>
+
+            <section id="package-management" class="docs-section">
+                <h2>Package Management</h2>
+                <p>Zen OS uses apt package manager with additional Zen-specific repositories and tools.</p>
+
+                <h3>Basic Commands</h3>
+                <div class="code-block">
+sudo apt update              # Update package lists
+sudo apt upgrade             # Upgrade installed packages
+sudo apt install &lt;package&gt;   # Install a package
+sudo apt remove &lt;package&gt;    # Remove a package
+apt search &lt;query&gt;           # Search for packages
+                </div>
+
+                <h3>Zen Package Manager</h3>
+                <p>The <code>zen</code> command provides additional functionality:</p>
+                <div class="code-block">
+zen install &lt;package&gt;    # Install with optimizations
+zen remove &lt;package&gt;     # Clean removal
+zen update              # System update with cleanup
+zen theme &lt;name&gt;        # Apply system theme
+                </div>
+            </section>
+
+            <section id="system-configuration" class="docs-section">
+                <h2>System Configuration</h2>
+                <p>Zen OS configuration files are located in predictable locations and use simple formats.</p>
+
+                <h3>Configuration Locations</h3>
+                <ul>
+                    <li><code>~/.config/zen/</code> - User-specific Zen settings</li>
+                    <li><code>~/.config/i3/config</code> - Window manager configuration</li>
+                    <li><code>~/.zshrc</code> - Shell configuration</li>
+                    <li><code>/etc/zen/</code> - System-wide Zen settings</li>
+                </ul>
+
+                <h3>Display Settings</h3>
+                <div class="code-block">
+# Set display resolution
+xrandr --output &lt;display&gt; --mode &lt;resolution&gt;
+
+# Multiple monitor setup
+zen display config
+                </div>
+            </section>
+
+            <section id="development-tools" class="docs-section">
+                <h2>Development Tools</h2>
+                <p>Zen OS comes pre-configured with a comprehensive development environment.</p>
+
+                <h3>Pre-installed Tools</h3>
+                <ul>
+                    <li>Git with sensible defaults</li>
+                    <li>Node.js and npm</li>
+                    <li>Python 3 with pip</li>
+                    <li>Docker and docker-compose</li>
+                    <li>VS Code with Zen theme</li>
+                    <li>Vim with modern configuration</li>
+                </ul>
+
+                <h3>Development Workflow</h3>
+                <div class="code-block">
+# Quick project setup
+zen create project &lt;name&gt; &lt;type&gt;
+
+# Language-specific environments
+zen env python  # Activate Python environment
+zen env node    # Activate Node.js environment
+zen env docker  # Start Docker daemon
+                </div>
+            </section>
+
+            <section id="customization" class="docs-section">
+                <h2>Customization</h2>
+                <p>Zen OS is highly customizable while maintaining its minimalist philosophy.</p>
+
+                <h3>Themes</h3>
+                <p>Switch between built-in themes:</p>
+                <div class="code-block">
+zen theme dark      # Dark theme (default)
+zen theme light     # Light theme
+zen theme minimal   # Ultra-minimal theme
+zen theme custom    # Your custom theme
+                </div>
+
+                <h3>Keybindings</h3>
+                <p>Customize keybindings by editing <code>~/.config/i3/config</code>:</p>
+                <div class="code-block">
+# Example custom binding
+bindsym $mod+shift+b exec firefox
+                </div>
+            </section>
+
+            <section id="troubleshooting" class="docs-section">
+                <h2>Troubleshooting</h2>
+                <p>Common issues and solutions for Zen OS.</p>
+
+                <h3>Boot Issues</h3>
+                <ul>
+                    <li>If the system fails to boot, try recovery mode from GRUB</li>
+                    <li>Check system logs with <code>journalctl -b</code></li>
+                    <li>Verify disk space with <code>df -h</code></li>
+                </ul>
+
+                <h3>Performance Issues</h3>
+                <div class="code-block">
+# Check system resources
+htop
+
+# Monitor system services
+systemctl status
+
+# Clean package cache
+sudo apt autoremove && sudo apt autoclean
+                </div>
+
+                <h3>Getting Help</h3>
+                <p>If you need additional help:</p>
+                <ul>
+                    <li><a href="forum.html">Visit the Community Forum</a></li>
+                    <li><a href="faq.html">Check the FAQ</a></li>
+                    <li>Join our Discord server</li>
+                    <li>File issues on GitHub</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen OS - Zebu | Ubuntu-based Linux Distribution</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="zen-logo.png" alt="Zen OS" class="logo">
+                <span class="brand-text">Zen OS</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#download" class="nav-link">Download</a>
+                <a href="#community" class="nav-link">Community</a>
+                <a href="documentation.html" class="nav-link">Documentation</a>
+                <a href="installation.html" class="nav-link">Installation</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="forum.html" class="nav-link">Forum</a>
+            </div>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="codename">Codename: Zebu</span>
+                </div>
+                <h1 class="hero-title">
+                    Welcome to <span class="gradient-text">Zen OS</span>
+                </h1>
+                <p class="hero-subtitle">
+                    A minimalist Ubuntu-based Linux distribution designed for developers, creators, and anyone seeking a clean, distraction-free computing experience.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary download-btn">
+                        <span>Download Zebu</span>
+                        <svg class="download-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-secondary">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="btn-close"></span>
+                            <span class="btn-minimize"></span>
+                            <span class="btn-maximize"></span>
+                        </div>
+                        <span class="terminal-title">zen@zebu:~$</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line">
+                            <span class="prompt">zen@zebu:~$</span>
+                            <span class="command typing">neofetch</span>
+                        </div>
+                        <div class="neofetch-output">
+                            <div class="ascii-art">
+                                ⚡ Zen OS
+                            </div>
+                            <div class="system-info">
+                                <div>OS: Zen OS Zebu</div>
+                                <div>Kernel: 6.8.0-zen</div>
+                                <div>DE: Custom Zen Desktop</div>
+                                <div>WM: i3-gaps</div>
+                                <div>Theme: Zen Dark</div>
+                                <div>CPU: Optimized for performance</div>
+                                <div>Memory: Minimal footprint</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Zen OS?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧘</div>
+                    <h3>Minimalist Design</h3>
+                    <p>Clean, distraction-free interface that lets you focus on what matters most - your work and creativity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Optimized kernel and lightweight components ensure blazing-fast boot times and responsive performance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛠️</div>
+                    <h3>Developer Ready</h3>
+                    <p>Pre-configured development environment with popular tools, languages, and frameworks ready out of the box.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure by Design</h3>
+                    <p>Built on Ubuntu's solid foundation with additional security hardening and privacy-focused defaults.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Customizable</h3>
+                    <p>Highly configurable desktop environment that adapts to your workflow and aesthetic preferences.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3>Package Management</h3>
+                    <p>Access to Ubuntu's vast software repository plus curated Zen-specific packages and tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <h2 class="section-title">Download Zen OS Zebu</h2>
+            <div class="download-cards">
+                <div class="download-card featured">
+                    <div class="card-header">
+                        <h3>Desktop Edition</h3>
+                        <span class="version">v60.04</span>
+                    </div>
+                    <div class="card-features">
+                        <ul>
+                            <li>Full desktop environment</li>
+                            <li>Pre-installed productivity apps</li>
+                            <li>Multimedia codecs included</li>
+                            <li>Perfect for daily use</li>
+                        </ul>
+                    </div>
+                    <div class="card-download">
+                        <button class="btn btn-primary download-btn">
+                            Download (2.1 GB)
+                        </button>
+                        <div class="download-links">
+                            <a href="#" class="download-link">Torrent</a>
+                            <a href="#" class="download-link">Checksums</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="download-card">
+                    <div class="card-header">
+                        <h3>Server Edition</h3>
+                        <span class="version">v60.04</span>
+                    </div>
+                    <div class="card-features">
+                        <ul>
+                            <li>Minimal server install</li>
+                            <li>Docker & containers ready</li>
+                            <li>Security hardened</li>
+                            <li>Perfect for development</li>
+                        </ul>
+                    </div>
+                    <div class="card-download">
+                        <button class="btn btn-secondary download-btn">
+                            Download (980 MB)
+                        </button>
+                        <div class="download-links">
+                            <a href="#" class="download-link">Torrent</a>
+                            <a href="#" class="download-link">Checksums</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="system-requirements">
+                <h3>System Requirements</h3>
+                <div class="requirements-grid">
+                    <div class="requirement">
+                        <strong>RAM:</strong> 2GB minimum, 4GB recommended
+                    </div>
+                    <div class="requirement">
+                        <strong>Storage:</strong> 15GB available space
+                    </div>
+                    <div class="requirement">
+                        <strong>Processor:</strong> 2 GHz dual-core or better
+                    </div>
+                    <div class="requirement">
+                        <strong>Graphics:</strong> 1024×768 resolution or higher
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="community">
+        <div class="container">
+            <h2 class="section-title">Join the Zen Community</h2>
+            <div class="community-grid">
+                <a href="#" class="community-card">
+                    <div class="community-icon">💬</div>
+                    <h3>Discord</h3>
+                    <p>Chat with users and developers in real-time</p>
+                </a>
+                <a href="#" class="community-card">
+                    <div class="community-icon">🐙</div>
+                    <h3>GitHub</h3>
+                    <p>Contribute to development and report issues</p>
+                </a>
+                <a href="#" class="community-card">
+                    <div class="community-icon">📧</div>
+                    <h3>Forum</h3>
+                    <p>Get help and share knowledge with the community</p>
+                </a>
+                <a href="#" class="community-card">
+                    <div class="community-icon">📰</div>
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with the latest news and releases</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="zen-logo.png" alt="Zen OS" class="footer-logo">
+                        <span>Zen OS</span>
+                    </div>
+                    <p>A minimalist Ubuntu-based distribution for the modern user.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Download</h4>
+                    <ul>
+                        <li><a href="#">Desktop Edition</a></li>
+                        <li><a href="#">Server Edition</a></li>
+                        <li><a href="#">Release Notes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Forum</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="documentation.html">Documentation</a></li>
+                        <li><a href="installation.html">Installation Guide</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="forum.html">Forum</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Zen OS Project. Licensed under GPL-3.0</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

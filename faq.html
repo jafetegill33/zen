@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Zen OS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 120px 1.5rem 80px;
+        }
+        .faq-content {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+        }
+        .faq-search {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+        .faq-categories {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .category-btn {
+            padding: 0.5rem 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-question {
+            padding: 1.5rem;
+            background: var(--surface);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .faq-question:hover {
+            background: #e2e8f0;
+        }
+        .faq-answer {
+            padding: 0 1.5rem;
+            background: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-answer.open {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+        .faq-toggle {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        .faq-toggle.open {
+            transform: rotate(45deg);
+        }
+        .code-snippet {
+            background: #1e293b;
+            color: #cbd5e1;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="zen-logo.png" alt="Zen OS" class="logo">
+                <span class="brand-text">Zen OS</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="documentation.html" class="nav-link">Documentation</a>
+                <a href="installation.html" class="nav-link">Installation</a>
+                <a href="faq.html" class="nav-link active">FAQ</a>
+                <a href="forum.html" class="nav-link">Forum</a>
+            </div>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="faq-container">
+        <div class="faq-content">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about Zen OS. Can't find what you're looking for? Visit our <a href="forum.html">community forum</a> for more help.</p>
+
+            <input type="text" class="faq-search" placeholder="Search FAQ..." id="faqSearch">
+
+            <div class="faq-categories">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="general">General</button>
+                <button class="category-btn" data-category="installation">Installation</button>
+                <button class="category-btn" data-category="system">System</button>
+                <button class="category-btn" data-category="development">Development</button>
+                <button class="category-btn" data-category="troubleshooting">Troubleshooting</button>
+            </div>
+
+            <div class="faq-list">
+                <!-- General Questions -->
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question">
+                        <span>What is Zen OS?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Zen OS is a minimalist Ubuntu-based Linux distribution designed for developers, creators, and users who want a clean, distraction-free computing experience. It combines the stability of Ubuntu with a carefully curated set of tools and a beautiful, minimal desktop environment.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question">
+                        <span>Is Zen OS free?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, Zen OS is completely free and open source. It's licensed under the GPL-3.0 license, which means you can use, modify, and distribute it freely. We believe in the power of open source software and community-driven development.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question">
+                        <span>What does "Zebu" mean?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Zebu is the codename for the current release of Zen OS (version 60.04). Like Ubuntu, we use alphabetical animal names for our releases. A zebu is a species of domestic cattle that represents strength, reliability, and adaptability - qualities we strive for in our operating system.</p>
+                    </div>
+                </div>
+
+                <!-- Installation Questions -->
+                <div class="faq-item" data-category="installation">
+                    <div class="faq-question">
+                        <span>Can I dual boot Zen OS with Windows?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, Zen OS fully supports dual booting with Windows and other operating systems. During installation, choose "Install alongside" option and the installer will automatically set up the dual boot configuration. Make sure to back up your important data before installation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="installation">
+                    <div class="faq-question">
+                        <span>How much disk space does Zen OS require?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Zen OS requires a minimum of 15GB of disk space, but we recommend at least 25GB for comfortable usage. The base installation takes about 8GB, leaving room for user data, applications, and system updates. For development work, consider allocating 50GB or more.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="installation">
+                    <div class="faq-question">
+                        <span>My Wi-Fi doesn't work during installation. What should I do?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If Wi-Fi doesn't work during installation, try connecting via Ethernet cable if possible. If that's not available, you can complete the installation offline and install Wi-Fi drivers afterward. Most modern Wi-Fi adapters will work automatically after the first update.</p>
+                        <div class="code-snippet">
+# After installation, update drivers
+sudo ubuntu-drivers autoinstall
+sudo reboot
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Questions -->
+                <div class="faq-item" data-category="system">
+                    <div class="faq-question">
+                        <span>What desktop environment does Zen OS use?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Zen OS uses a custom desktop environment built around i3-gaps window manager with carefully selected components. This provides a minimal, tiling window manager experience that's perfect for productivity while remaining accessible to newcomers.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="system">
+                    <div class="faq-question">
+                        <span>Can I install traditional desktop environments like GNOME or KDE?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can install other desktop environments if you prefer. However, this may conflict with Zen OS's minimalist philosophy and could affect system performance. You can install them using:</p>
+                        <div class="code-snippet">
+# Install GNOME
+sudo apt install ubuntu-desktop
+
+# Install KDE
+sudo apt install kubuntu-desktop
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="system">
+                    <div class="faq-question">
+                        <span>How do I update Zen OS?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Zen OS uses the standard Ubuntu update mechanism with some enhancements. You can update through the graphical update manager or using the command line:</p>
+                        <div class="code-snippet">
+# Standard Ubuntu updates
+sudo apt update && sudo apt upgrade
+
+# Zen OS enhanced update (recommended)
+zen update
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Development Questions -->
+                <div class="faq-item" data-category="development">
+                    <div class="faq-question">
+                        <span>What development tools come pre-installed?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Zen OS comes with a comprehensive development environment including:</p>
+                        <ul>
+                            <li>Git with sensible defaults</li>
+                            <li>Node.js and npm</li>
+                            <li>Python 3 with pip</li>
+                            <li>Docker and docker-compose</li>
+                            <li>VS Code with Zen theme</li>
+                            <li>Vim with modern configuration</li>
+                            <li>Build tools (gcc, make, etc.)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="development">
+                    <div class="faq-question">
+                        <span>How do I set up a development environment for a specific language?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Zen OS includes convenience commands for setting up development environments:</p>
+                        <div class="code-snippet">
+# Python development
+zen env python
+
+# Node.js development  
+zen env node
+
+# Docker development
+zen env docker
+
+# Go development
+zen install go-dev-tools
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Troubleshooting Questions -->
+                <div class="faq-item" data-category="troubleshooting">
+                    <div class="faq-question">
+                        <span>Zen OS won't boot after installation. What should I do?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If Zen OS won't boot, try these steps:</p>
+                        <ol>
+                            <li>Check BIOS/UEFI boot order settings</li>
+                            <li>Try booting from recovery mode in GRUB</li>
+                            <li>Check if Secure Boot is causing issues</li>
+                            <li>Boot from a live USB and check disk integrity</li>
+                        </ol>
+                        <p>If the problem persists, visit our forum for detailed troubleshooting help.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="troubleshooting">
+                    <div class="faq-question">
+                        <span>How do I report bugs or issues?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can report bugs and issues through several channels:</p>
+                        <ul>
+                            <li><strong>GitHub Issues:</strong> For technical bugs and feature requests</li>
+                            <li><strong>Community Forum:</strong> For general issues and discussion</li>
+                            <li><strong>Discord:</strong> For real-time help and quick questions</li>
+                        </ul>
+                        <p>When reporting bugs, please include system information, steps to reproduce, and any error messages.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="troubleshooting">
+                    <div class="faq-question">
+                        <span>My system is running slowly. How can I improve performance?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Try these performance optimization steps:</p>
+                        <div class="code-snippet">
+# Check system resources
+htop
+
+# Clean package cache
+sudo apt autoremove && sudo apt autoclean
+
+# Check for heavy processes
+systemctl --user status
+
+# Optimize system
+zen optimize
+                        </div>
+                        <p>If performance issues persist, consider checking hardware compatibility or asking for help on our forum.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="system">
+                    <div class="faq-question">
+                        <span>How do I customize the appearance and keybindings?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Zen OS is highly customizable. You can modify:</p>
+                        <ul>
+                            <li><strong>Themes:</strong> Use <code>zen theme &lt;name&gt;</code> command</li>
+                            <li><strong>Keybindings:</strong> Edit <code>~/.config/i3/config</code></li>
+                            <li><strong>Status bar:</strong> Configure <code>~/.config/i3status/config</code></li>
+                            <li><strong>Colors:</strong> Modify <code>~/.config/zen/colors</code></li>
+                        </ul>
+                        <p>After making changes, restart i3 with <code>Super + Shift + r</code>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="docs-section" style="margin-top: 3rem; text-align: center;">
+                <h2>Still Need Help?</h2>
+                <p>If you couldn't find the answer to your question, don't hesitate to reach out to our community:</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
+                    <a href="forum.html" class="btn btn-primary">Visit Forum</a>
+                    <a href="#" class="btn btn-secondary">Join Discord</a>
+                    <a href="documentation.html" class="btn btn-secondary">Read Docs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ search functionality
+        const searchInput = document.getElementById('faqSearch');
+        const faqItems = document.querySelectorAll('.faq-item');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Category filtering
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const category = btn.dataset.category;
+                faqItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                
+                answer.classList.toggle('open');
+                toggle.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>
