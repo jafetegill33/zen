@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen OS Zebu v60.04 Release - Zen OS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .release-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 120px 1.5rem 80px;
+        }
+        .release-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+        }
+        .release-version {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            font-family: 'Space Mono', monospace;
+        }
+        .release-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .release-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        .release-date {
+            font-size: 1rem;
+            opacity: 0.8;
+            font-family: 'Space Mono', monospace;
+        }
+        .release-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .release-main {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+        }
+        .release-sidebar {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        .release-section {
+            margin-bottom: 2.5rem;
+        }
+        .release-section h2 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            padding-left: 2rem;
+        }
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .feature-list li.new::before {
+            content: '🆕';
+        }
+        .feature-list li.improved::before {
+            content: '⚡';
+        }
+        .feature-list li.fixed::before {
+            content: '🔧';
+        }
+        .changelog-item {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-color);
+        }
+        .changelog-type {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .changelog-type.new {
+            background: #10b981;
+            color: white;
+        }
+        .changelog-type.improved {
+            background: #3b82f6;
+            color: white;
+        }
+        .changelog-type.fixed {
+            background: #f59e0b;
+            color: white;
+        }
+        .changelog-type.security {
+            background: #ef4444;
+            color: white;
+        }
+        .download-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .download-box h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .download-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .download-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        .download-link:hover {
+            text-decoration: underline;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .info-item {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+        }
+        .info-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+        .info-value {
+            color: var(--text-primary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+        }
+        .code-snippet {
+            background: #1e293b;
+            color: #cbd5e1;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            margin: 0.5rem 0;
+            overflow-x: auto;
+        }
+        @media (max-width: 768px) {
+            .release-content {
+                grid-template-columns: 1fr;
+            }
+            .release-sidebar {
+                position: static;
+                order: -1;
+            }
+            .release-title {
+                font-size: 2rem;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="zen-logo.png" alt="Zen OS" class="logo">
+                <span class="brand-text">Zen OS</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="documentation.html" class="nav-link">Documentation</a>
+                <a href="installation.html" class="nav-link">Installation</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="forum.html" class="nav-link">Forum</a>
+                <a href="release.html" class="nav-link active">Release</a>
+            </div>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="release-container">
+        <div class="release-header">
+            <div class="release-version">Zen OS v60.04</div>
+            <h1 class="release-title">Codename: Zebu</h1>
+            <p class="release-subtitle">A new chapter in minimalist computing</p>
+            <div class="release-date">Released: December 15, 2024</div>
+        </div>
+
+        <div class="release-content">
+            <main class="release-main">
+                <section class="release-section">
+                    <h2>What's New in Zebu</h2>
+                    <p>Zen OS Zebu v60.04 represents a significant milestone in our journey toward the perfect minimalist computing experience. This release focuses on performance optimization, enhanced developer tools, and improved user experience while maintaining our core philosophy of simplicity and elegance.</p>
+
+                    <ul class="feature-list">
+                        <li class="new">Custom Zen Desktop Environment with i3-gaps integration</li>
+                        <li class="new">Enhanced terminal with zsh and productivity aliases</li>
+                        <li class="new">Pre-configured development environment for modern workflows</li>
+                        <li class="improved">30% faster boot times compared to previous releases</li>
+                        <li class="improved">Optimized memory usage with custom kernel patches</li>
+                        <li class="improved">Updated package repositories with 2,000+ curated packages</li>
+                        <li class="fixed">Resolved Wi-Fi adapter compatibility issues</li>
+                        <li class="fixed">Fixed display scaling on high-DPI monitors</li>
+                        <li class="fixed">Improved battery life on laptops</li>
+                    </ul>
+                </section>
+
+                <section class="release-section">
+                    <h2>Detailed Changelog</h2>
+                    
+                    <div class="changelog-item">
+                        <span class="changelog-type new">NEW</span>
+                        <h4>Zen Desktop Environment</h4>
+                        <p>Introduced our custom desktop environment built around i3-gaps, featuring automatic workspace management, intelligent window tiling, and a minimal status bar with essential system information.</p>
+                    </div>
+
+                    <div class="changelog-item">
+                        <span class="changelog-type new">NEW</span>
+                        <h4>Developer Tools Suite</h4>
+                        <p>Pre-installed development environment including Git, Node.js, Python 3, Docker, VS Code with Zen theme, and Vim with modern configuration. Ready for development out of the box.</p>
+                    </div>
+
+                    <div class="changelog-item">
+                        <span class="changelog-type improved">IMPROVED</span>
+                        <h4>Performance Optimizations</h4>
+                        <p>Kernel optimizations and custom patches result in 30% faster boot times, reduced memory footprint, and improved overall system responsiveness.</p>
+                    </div>
+
+                    <div class="changelog-item">
+                        <span class="changelog-type improved">IMPROVED</span>
+                        <h4>Package Management</h4>
+                        <p>Enhanced zen command-line tool for simplified package management, system updates, and configuration. Includes automated cleanup and optimization routines.</p>
+                    </div>
+
+                    <div class="changelog-item">
+                        <span class="changelog-type fixed">FIXED</span>
+                        <h4>Hardware Compatibility</h4>
+                        <p>Resolved compatibility issues with modern Wi-Fi adapters, improved graphics driver support, and fixed suspend/resume functionality on various laptop models.</p>
+                    </div>
+
+                    <div class="changelog-item">
+                        <span class="changelog-type security">SECURITY</span>
+                        <h4>Security Enhancements</h4>
+                        <p>Updated security policies, enhanced firewall configuration, and improved default privacy settings. All packages updated to latest security patches.</p>
+                    </div>
+                </section>
+
+                <section class="release-section">
+                    <h2>Installation Instructions</h2>
+                    <p>Installing Zen OS Zebu is straightforward. Follow our comprehensive installation guide for step-by-step instructions.</p>
+                    
+                    <h3>Quick Start</h3>
+                    <div class="code-snippet">
+# Verify ISO integrity
+sha256sum zen-os-zebu-v60.04-desktop-amd64.iso
+
+# Create bootable USB
+sudo dd if=zen-os-zebu-v60.04-desktop-amd64.iso of=/dev/sdX bs=4M status=progress
+
+# Boot from USB and follow the graphical installer
+                    </div>
+
+                    <p>For detailed instructions, system requirements, and troubleshooting, visit our <a href="installation.html">Installation Guide</a>.</p>
+                </section>
+
+                <section class="release-section">
+                    <h2>Known Issues</h2>
+                    <ul>
+                        <li>Some older NVIDIA graphics cards may require proprietary drivers for optimal performance</li>
+                        <li>Bluetooth audio may require manual pairing on some devices</li>
+                        <li>Hibernation is disabled by default for system stability</li>
+                    </ul>
+                    
+                    <p>For workarounds and updates on these issues, check our <a href="faq.html">FAQ</a> or visit the <a href="forum.html">community forum</a>.</p>
+                </section>
+
+                <section class="release-section">
+                    <h2>Upgrade Instructions</h2>
+                    <p>Existing Zen OS users can upgrade to Zebu v60.04 using the following commands:</p>
+                    
+                    <div class="code-snippet">
+# Update package repositories
+sudo apt update
+
+# Upgrade to latest version
+zen upgrade zebu
+
+# Reboot to complete upgrade
+sudo reboot
+                    </div>
+
+                    <p><strong>Note:</strong> We recommend backing up important data before upgrading. The upgrade process typically takes 15-30 minutes.</p>
+                </section>
+            </main>
+
+            <aside class="release-sidebar">
+                <div class="download-box">
+                    <h3>Download Zebu v60.04</h3>
+                    <button class="btn btn-primary">Desktop Edition (2.1 GB)</button>
+                    <button class="btn btn-secondary">Server Edition (980 MB)</button>
+                    <div class="download-links">
+                        <a href="#" class="download-link">🔗 Torrent Downloads</a>
+                        <a href="#" class="download-link">🔍 Checksums (SHA256)</a>
+                        <a href="#" class="download-link">📋 GPG Signatures</a>
+                        <a href="#" class="download-link">📊 Mirror List</a>
+                    </div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Version</div>
+                        <div class="info-value">60.04</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Codename</div>
+                        <div class="info-value">Zebu</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Release Date</div>
+                        <div class="info-value">2024-12-15</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Kernel Version</div>
+                        <div class="info-value">6.8.0-zen</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Desktop</div>
+                        <div class="info-value">Zen DE / i3-gaps</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Base</div>
+                        <div class="info-value">Ubuntu 24.04 LTS</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Architecture</div>
+                        <div class="info-value">x86_64</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">License</div>
+                        <div class="info-value">GPL-3.0</div>
+                    </div>
+                </div>
+
+                <h3>System Requirements</h3>
+                <ul style="font-size: 0.9rem; color: var(--text-secondary);">
+                    <li>2GB RAM (4GB recommended)</li>
+                    <li>15GB storage (25GB recommended)</li>
+                    <li>64-bit processor</li>
+                    <li>UEFI or Legacy BIOS</li>
+                    <li>1024×768 display resolution</li>
+                </ul>
+
+                <h3>Support Channels</h3>
+                <div style="margin-top: 1rem;">
+                    <a href="forum.html" class="btn btn-secondary btn-small" style="display: block; margin-bottom: 0.5rem;">Community Forum</a>
+                    <a href="#" class="btn btn-secondary btn-small" style="display: block; margin-bottom: 0.5rem;">Discord Chat</a>
+                    <a href="#" class="btn btn-secondary btn-small" style="display: block; margin-bottom: 0.5rem;">GitHub Issues</a>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
